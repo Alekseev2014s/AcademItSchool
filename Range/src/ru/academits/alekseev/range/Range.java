@@ -34,22 +34,27 @@ class Range {
     }
 
     Range getIntersection(Range range) {
+        //не пересекаются
         if (from > range.to || range.from > to) {
             return null;
         }
 
+        //range входит в this
         if (from <= range.from && to >= range.to) {
             return new Range(range.from, range.to);
         }
 
+        //this входит в range
         if (from > range.from && to > range.to) {
             return new Range(from, to);
         }
 
+        //range частично дальше this
         if (from < range.from && to < range.to) {
             return new Range(range.from, to);
         }
 
+        //this частично дальше range
         return new Range(from, range.to);
     }
 
