@@ -34,11 +34,11 @@ class Range {
     }
 
     Range getIntersection(Range range) {
-        if (this.from >= range.to || range.from >= this.to) {
+        if (from > range.to || range.from > to) {
             return null;
         }
 
-        if (from < range.from && to > range.to) {
+        if (from <= range.from && to >= range.to) {
             return new Range(range.from, range.to);
         }
 
@@ -46,11 +46,18 @@ class Range {
             return new Range(from, to);
         }
 
-        //TODO: доделать!!!
-        return null;
+        if (from < range.from && to < range.to) {
+            return new Range(range.from, to);
+        }
+
+        return new Range(from, range.to);
     }
 
     Range[] getUnion(Range range) {
+        if (from > range.to || range.from > to) {
+            return new Range[]{new Range(from, to), new Range(range.from, range.to)};
+        }
+
         return null;
     }
 }
