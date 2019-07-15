@@ -16,13 +16,6 @@ public class Main {
         System.out.println("To = " + range1.getTo());
         System.out.println("Длина: " + range1.getLength());
 
-        /*
-        System.out.println("Введите вещественное начальное чилос:");
-        range1.setFrom(scanner.nextDouble());
-        System.out.println("Введите вещественное конечное чилос:");
-        range1.setTo(scanner.nextDouble());
-        */
-
         System.out.println("Введите вещественное чилос:");
         double number = scanner.nextDouble();
 
