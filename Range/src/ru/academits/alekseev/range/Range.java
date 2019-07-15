@@ -59,10 +59,27 @@ class Range {
     }
 
     Range[] getUnion(Range range) {
+        //не пересекаются
         if (from > range.to || range.from > to) {
             return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
 
-        return null;
+        //range входит в this
+        if (from <= range.from && to >= range.to) {
+            return new Range[]{new Range(from, to)};
+        }
+
+        //this входит в range
+        if (from > range.from && to > range.to) {
+            return new Range[]{new Range(range.from, range.to)};
+        }
+
+        //range частично дальше this
+        if (from < range.from && to < range.to) {
+            return new Range[]{new Range(from, range.to)};
+        }
+
+        //this частично дальше range
+        return new Range[]{new Range(range.from, to)};
     }
 }
