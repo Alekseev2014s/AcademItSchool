@@ -82,4 +82,29 @@ class Range {
         //this частично дальше range
         return new Range[]{new Range(range.from, to)};
     }
+
+    Range[] getDifference(Range range) {
+        //не пересекаются
+        if (from > range.to || range.from > to) {
+            return new Range[]{new Range(from, to)};
+        }
+
+        //range входит в this
+        if (from <= range.from && to >= range.to) {
+            return new Range[]{new Range(from, range.from), new Range(range.to, to)};
+        }
+
+        //this входит в range
+        if (from > range.from && to > range.to) {
+            return new Range[]{new Range(range.from, from), new Range(to, range.to)};
+        }
+
+        //range частично дальше this
+        if (from < range.from && to < range.to) {
+            return new Range[]{new Range(from, range.from)};
+        }
+
+        //this частично дальше range
+        return new Range[]{new Range(range.from, from)};
+    }
 }

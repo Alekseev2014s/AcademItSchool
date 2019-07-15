@@ -32,8 +32,14 @@ public class Main {
             System.out.println("Введённое число непринадлежит отрезку");
         }
 
-        Range range3[] = range1.getUnion(range2);
+        System.out.println("Интервал-пересечения: " + range1.getIntersection(range2));
 
-        System.out.println(Arrays.toString(range3));
+        for (Range rangeItem : range1.getUnion(range2)) {
+            System.out.printf("Результат объединения: %f, %f %n", rangeItem.getFrom(), rangeItem.getTo());
+        }
+
+        for (Range rangeItem : range1.getDifference(range2)) {
+            System.out.printf("Результат разности: %f, %f %n", rangeItem.getFrom(), rangeItem.getTo());
+        }
     }
 }
